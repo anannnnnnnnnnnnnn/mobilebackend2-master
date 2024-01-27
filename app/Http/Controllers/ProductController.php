@@ -21,6 +21,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
+        $fields = $request->validate([
+            "pd_name" => "require|string",
+            "pd_type" => "require|integer",
+            "pd_price" => "require|double",
+        ]);
+
         Product::create([
             "product_name" => $request->pd_name,
             "product_type" => $request->pd_type,
